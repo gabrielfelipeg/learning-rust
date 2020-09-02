@@ -1,5 +1,10 @@
 fn mergesort(arr: &Vec<i32>) -> Vec<i32> {
-
+    if arr.len() == 1{
+        return vec!(arr[0])
+    } else {
+        let mid_size : usize = arr.len()/2;
+        return merge(&mergesort(&arr[..mid_size].to_vec()), &mergesort(&arr[mid_size..].to_vec()))
+    }
 }
 
 fn merge(arr1 : &Vec<i32>, arr2 : &Vec<i32>) -> Vec<i32> {
@@ -32,5 +37,6 @@ fn merge(arr1 : &Vec<i32>, arr2 : &Vec<i32>) -> Vec<i32> {
 
 
 fn main() {
-    println!("Hello, world!");
+    let teste_v = vec!(5, 2, 3, 4, 1);
+    println!("{:?}", mergesort(&teste_v));
 }
